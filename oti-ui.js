@@ -25,10 +25,23 @@ function showMapPage(map) {
 }
 
 function startButtonClicked() {
-    window.gamestate.originString = $('#addressInput').val();
-    transitionIntroToStreetView();
+	newGame($('#addressInput').val());
+    transitionToStreetView();
 }
 
 function readyButtonClicked() {
-	transitionStreetViewToMapView();
+	transitionToMapView();
+}
+
+function answerButtonClicked(button) {
+	var selectedIndex = button.target.value;
+	var answer = window.gamestate.selectedPlace;
+	var placeChoices = window.gamestate.placeChoices;
+	if (placeChoices[selectedIndex] == answer) {
+		alert("Correct!");
+	}
+	else {
+		alert("Wrong!");
+	}
+	restart();
 }

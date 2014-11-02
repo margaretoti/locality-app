@@ -1,6 +1,6 @@
-function newGame() {
+function newGame(origin) {
     window.gamestate = {
-        "originString": "",
+        "originString": origin,
         "originLatLng": null,
         "places": [],
         "selectedPlace": null,
@@ -10,11 +10,11 @@ function newGame() {
         
         "nearbyRadius": 50,
         "radius": 1000,
-        "numChoices": 5
+        "numChoices": 4
     };
 }
 
-function transitionIntroToStreetView() {
+function transitionToStreetView() {
     // Call the API to get to the street view
     getOriginLatLng();
     
@@ -23,7 +23,7 @@ function transitionIntroToStreetView() {
     showStreetView();
 }
 
-function transitionStreetViewToMapView() {
+function transitionToMapView() {
     // Call the API to get the choices
     var map = getMap();
 
@@ -31,6 +31,7 @@ function transitionStreetViewToMapView() {
     showMapPage(map);
 }
 
-function startTestGame() {
-    newGame("102 Halsey Street, Providence, RI");
+function restart() {
+    newGame(window.gamestate.originString);
+    transitionToStreetView();
 }
