@@ -27,6 +27,16 @@ html, body, #map-canvas {
     bottom: 50px;
 }
 
+#choiceButtons {
+    display: inline-block;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 30px;
+}
+
 #introPage .form {
     display: inline-block;
     position: absolute;
@@ -54,4 +64,9 @@ html, body, #map-canvas {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
+}
+
+#map img {
+    width: 100%;
+    height: 100%;
 }

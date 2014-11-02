@@ -120,17 +120,29 @@ function selectRandomPlace(places) {
     return placeLocation;
 }
 
-var markerColors = ["yellow", "green", "blue", "red", "orange", "black", "brown", "purple", "white", "gray"];
+var markerColors = ["gray", "blue", "green", "orange", "red", "yellow", "black", "brown", "purple", "white" ];
 function getMap() {
+    // get the width and height of the window
+    var w = $(window).width();
+    var h = $(window).height();
+    if (w > 640) {
+        h = Math.floor(h * (640 / w));
+        w = 640;
+    }
+    if (h > 640) {
+        w = Math.floor(w * (640 / h));
+        h = 640;
+    }
+
     // construct the url for the static map image
     var src = "https://maps.googleapis.com/maps/api/staticmap?center=";
     src += window.gamestate.originLatLng.k;
     src += ","
     src += window.gamestate.originLatLng.B;
     src += "&zoom=14&size="
-    src += window.innerWidth;
+    src += w;
     src += "x"
-    src += window.innerHeight;
+    src += h;
     src += "&maptype=roadmap";
     
     // add the markers for each of the choices
