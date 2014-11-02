@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- My styles -->
+        <link rel="stylesheet" href="styles.css">
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+            
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+                
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        
+        <!-- Google Maps API -->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQXXVWjDa-DCQULfMYebiWEspXDIO0XYU&libraries=places"></script>
+        
+        <!-- Maggggiiieeeee -->
+        <script type="text/javascript" src="placelist.js"></script>
+        <script type="text/javascript" src="oti-api.js"></script>
+        <script type="text/javascript" src="oti-ui.js"></script>
+        <script type="text/javascript" src="oti.js"></script>
+        <script>
+            $(document).ready(function() {
+                              $('#startButton').on('click', startButtonClicked);
+                              showIntro();
+                              newGame();
+                                });
+                                
+        </script>
+    </head>
+    <body>
+        <div id="introPage" class="page">
+            <div class="form col-lg-6">
+                <div class="input-group input-group-xlarge">
+                    <input id="addressInput" type="text" class="form-control" placeholder="Enter a location">
+                    <span class="input-group-btn">
+                        <button id="startButton" class="btn btn-default" type="button">Start</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div id="streetViewPage" class="page" style="display:none">
+            <div id="imageContainer"></div>
+            <div id="buttons">
+                <button id="readyButton" type="button" class="btn btn-xlarge btn-success" autocomplete="off">Ready</button>
+            </div>
+        </div>
+        <div id="mapPage" class="page" style="display:none">
+        </div>
+    </body>
+</html>
