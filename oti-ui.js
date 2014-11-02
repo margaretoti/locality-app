@@ -14,7 +14,12 @@ function showStreetView() {
     $("#streetViewPage").show();
 }
 
-function showMapPage() {
+function showMapPage(map) {
+	// empty the old map and insert the new one
+	$("#map").empty();
+	$("#map").append(map);
+
+	// show the map page
     hideAllPages();
     $("#mapPage").show();
 }
@@ -22,4 +27,8 @@ function showMapPage() {
 function startButtonClicked() {
     window.gamestate.originString = $('#addressInput').val();
     transitionIntroToStreetView();
+}
+
+function readyButtonClicked() {
+	transitionStreetViewToMapView();
 }

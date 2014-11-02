@@ -43,12 +43,22 @@ function nearbyPlacesReceivedCallback(results, status) {
 
 }
 
+// chooses some places for the game.
+// the selected place is included in the placeChoices array
+// the place choices array is in a random order
 function choosePlacesForGame() {
+    // Generate the selected place
     window.gamestate.selectedPlace = selectRandomPlace();
+
+    // Create the choices
     window.gamestate.placeChoices = [];
     for (var i = 0; i < window.gamestate.numChoices; i++) {
         window.gamestate.placeChoices.push(selectRandomPlace());
     }
+
+    // Randomly insert the selected place into the choices
+    var selectedPlaceInsertionIndex = Math.floor(Math.random() * (window.gamestate.numChoices+1));
+    window.gamestate.placeChoices.splice(selectedPlaceInsertionIndex, 0, window.gamestate.selectedPlace);
     
     findNearbyStreetView();
 }
@@ -108,4 +118,29 @@ function selectRandomPlace(places) {
     var selectedPlace = places[randomIndex];
     var placeLocation = selectedPlace.geometry.location;
     return placeLocation;
+}
+
+var markerColors = ["yellow", "green", "blue", "red", "orange", "black", "brown", "purple", "white", "gray"];
+function getMap() {
+    // construct the url for the static map image
+    var src = "https://maps.googleapis.com/maps/api/staticmap?center=";
+    src += window.gamestate.originLatLng.k;
+    src += ","
+    src += window.gamestate.originLatLng.B;
+    src += "&zoom=14&size="
+    src += window.innerWidth;
+    src += "x"
+    src += window.innerHeight;
+    src += "&maptype=roadmap";
+    
+    // add the markers for each of the choices
+    var choices = window.gamestate.placeChoices;
+    for (var i = 0; i < choices.length; i++) {
+        src += "&markers=color:"+markerColors[i]+"%7Clabel:"+i+"%7C"+choices[i].k+","+choices[i].B;
+    }
+    
+    // return a map element
+    var map = document.createElement("img");
+    map.src = src;
+    return map
 }

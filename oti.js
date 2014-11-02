@@ -23,6 +23,14 @@ function transitionIntroToStreetView() {
     showStreetView();
 }
 
+function transitionStreetViewToMapView() {
+    // Call the API to get the choices
+    var map = getMap();
+
+    // Show the map view
+    showMapPage(map);
+}
+
 function startTestGame() {
     newGame("102 Halsey Street, Providence, RI");
 }

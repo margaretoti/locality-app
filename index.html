@@ -28,7 +28,7 @@
         <script>
             $(document).ready(function() {
                               $('#startButton').on('click', startButtonClicked);
-                              showIntro();
+                              $('#readyButton').on('click', readyButtonClicked);
                               newGame();
                                 });
                                 
@@ -52,6 +52,9 @@
             </div>
         </div>
         <div id="mapPage" class="page" style="display:none">
+            <div id="map"></div>
+            <div id="choiceButtons">
+            </div>
         </div>
     </body>
 </html>
